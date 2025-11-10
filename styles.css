@@ -1,0 +1,127 @@
+/* Professional Gradient Background */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* Main Form Container */
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center logo and title */
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;           /* spacing between fields */
+  padding-bottom: 20px; /* space for submit button */
+}
+
+/* Company Logo */
+.logo {
+  display: block;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 auto 20px;
+}
+
+/* Form Title */
+h1 {
+  color: #2a2a2a;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+/* Input Groups */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-group input,
+.input-group select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fdfdfd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Modern Consent Styling */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;                 /* space between checkbox and text */
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.consent input[type="checkbox"] {
+  flex-shrink: 0;            /* checkbox stays its natural size */
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;           /* vertically align with first line of text */
+  accent-color: #4a90e2;     /* modern checkbox color */
+}
+
+.consent span {
+  display: inline-block;
+}
+
+.consent a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.consent a:hover {
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.form-container form button[type="submit"] {
+  display: block;
+  width: 150px;           /* fixed nice size */
+  margin: 50px auto 0;    /* centers horizontally */
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container form button[type="submit"]:hover {
+  background-color: #357ab8;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical; /* Allows resizing up/down only */
+  min-height: 100px;
+}
+
