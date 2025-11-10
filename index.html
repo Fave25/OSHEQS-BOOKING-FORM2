@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking Form</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ✅ Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+  <div class="form-container">
+    <!-- Logo -->
+    <img src="images/Osheqs_PNG.png" alt="OSHEQS Logo" class="logo" />
+    <h1>Booking Form</h1>
+
+    <form>
+      <!-- Title -->
+      <div class="input-group">
+        <label for="title">Title</label>
+        <select id="title" name="title" required>
+          <option value="">Select</option>
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mrs</option>
+          <option value="Ms">Ms</option>
+          <option value="Dr">Dr</option>
+        </select>
+      </div>
+
+      <!-- Name and Surname -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="input-group">
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" name="surname" required />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <label for="email"> Client Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <!-- Main Service -->
+      <div class="input-group">
+        <label for="mainService">What service would you like to book?</label>
+        <select id="mainService" name="mainService" required>
+          <option value="">Select a service</option>
+          <option value="Medical Surveillance">Medical Surveillance</option>
+          <option value="Incapacity & Impairment Assessments">Incapacity & Impairment Assessments</option>
+          <option value="Occupational Health Audits">Occupational Health Audits</option>
+          <option value="Outbreak Readiness and Response">Outbreak Readiness and Response</option>
+          <option value="Environmental Services">Environmental Services</option>
+        </select>
+      </div>
+
+      <!-- Sub Service (conditional) -->
+      <div class="input-group" id="subService-group" style="display: none;">
+        <label for="subService">Please select a Medical Surveillance option:</label>
+        <select id="subService" name="subService">
+          <option value="">Select one</option>
+          <option value="Construction">Construction</option>
+          <option value="Standard">Standard</option>
+          <option value="Standard MDT">Standard MDT</option>
+        </select>
+      </div>
+
+      <!-- Enquiry Details (conditional) -->
+      <div class="input-group" id="enquiry-group" style="display: none;">
+        <label for="enquiryDetails">Please provide more information about your enquiry:</label>
+        <textarea id="enquiryDetails" name="enquiryDetails" rows="4" placeholder="Type details here..."></textarea>
+      </div>
+
+      <!-- Company -->
+      <div class="input-group">
+        <label for="company">Company/Organisation Name</label>
+        <input type="text" id="company" name="company" />
+      </div>
+
+      <!-- Number of People -->
+      <div class="input-group">
+        <label for="people">Number of People (Booking)</label>
+        <input type="number" id="people" name="people" min="1" required />
+      </div>
+
+      <!-- Date Picker -->
+      <div class="input-group">
+        <label for="date">Select Date</label>
+        <input type="text" id="date" name="date" required placeholder="Pick a date" />
+      </div>
+     <div class="input-group consent">
+  <label for="consent">
+    <input type="checkbox" id="consent" name="consent" required>
+    <span>By completing this form, you are giving us consent to collect and process your Personal Information in accordance with the <strong>Protection of Personal Information (POPI) Act</strong> and our <a href="#" target="_blank">Privacy Policy</a>.</span>
+  </label>
+</div>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+  </div>
+
+  <!-- ✅ Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#date", {
+      altInput: true,
+      altFormat: "F j, Y",
+      dateFormat: "Y-m-d",
+      minDate: "today",
+      disable: [
+        "2025-07-01",
+        "2025-07-17",
+        function(date) {
+          return (date.getDay() === 0 || date.getDay() === 6); // Disable weekends
+        }
+      ]
+    });
+
+    // Show/hide sub service or enquiry based on main service
+    const mainService = document.getElementById('mainService');
+    const subServiceGroup = document.getElementById('subService-group');
+    const enquiryGroup = document.getElementById('enquiry-group');
+
+    const enquiryServices = [
+      "Incapacity & Impairment Assessments",
+      "Occupational Health Audits",
+      "Outbreak Readiness and Response",
+      "Environmental Services"
+    ];
+
+    mainService.addEventListener('change', function () {
+      const value = this.value;
+      if (value === "Medical Surveillance") {
+        subServiceGroup.style.display = 'block';
+        enquiryGroup.style.display = 'none';
+      } else if (enquiryServices.includes(value)) {
+        subServiceGroup.style.display = 'none';
+        enquiryGroup.style.display = 'block';
+      } else {
+        subServiceGroup.style.display = 'none';
+        enquiryGroup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
